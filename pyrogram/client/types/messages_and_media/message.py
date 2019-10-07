@@ -2439,7 +2439,7 @@ class Message(Object, Update):
             parse_mode=parse_mode,
             disable_web_page_preview=disable_web_page_preview,
             reply_markup=reply_markup
-        ))
+        ).__dict__)
         return self
 
     edit = edit_text
@@ -2493,7 +2493,7 @@ class Message(Object, Update):
             caption=caption,
             parse_mode=parse_mode,
             reply_markup=reply_markup
-        ))
+        ).__dict__)
         return self
 
     def edit_media(self, media: InputMedia, reply_markup: "pyrogram.InlineKeyboardMarkup" = None) -> "Message":
@@ -2532,7 +2532,7 @@ class Message(Object, Update):
             message_id=self.message_id,
             media=media,
             reply_markup=reply_markup
-        ))
+        ).__dict__)
         return self
 
     def edit_reply_markup(self, reply_markup: "pyrogram.InlineKeyboardMarkup" = None) -> "Message":
@@ -2568,7 +2568,7 @@ class Message(Object, Update):
             chat_id=self.chat.id,
             message_id=self.message_id,
             reply_markup=reply_markup
-        ))
+        ).__dict__)
 
     def forward(
         self,
