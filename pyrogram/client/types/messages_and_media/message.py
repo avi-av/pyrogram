@@ -2432,14 +2432,15 @@ class Message(Object, Update):
         Raises:
             RPCError: In case of a Telegram RPC error.
         """
-        return self._client.edit_message_text(
+        self.__dict__.update(self._client.edit_message_text(
             chat_id=self.chat.id,
             message_id=self.message_id,
             text=text,
             parse_mode=parse_mode,
             disable_web_page_preview=disable_web_page_preview,
             reply_markup=reply_markup
-        )
+        ))
+        return self
 
     edit = edit_text
 
@@ -2486,13 +2487,14 @@ class Message(Object, Update):
         Raises:
             RPCError: In case of a Telegram RPC error.
         """
-        return self._client.edit_message_caption(
+        self.__dict__.update(self._client.edit_message_caption(
             chat_id=self.chat.id,
             message_id=self.message_id,
             caption=caption,
             parse_mode=parse_mode,
             reply_markup=reply_markup
-        )
+        ))
+        return self
 
     def edit_media(self, media: InputMedia, reply_markup: "pyrogram.InlineKeyboardMarkup" = None) -> "Message":
         """Bound method *edit_media* of :obj:`Message`.
@@ -2525,12 +2527,13 @@ class Message(Object, Update):
         Raises:
             RPCError: In case of a Telegram RPC error.
         """
-        return self._client.edit_message_media(
+        self.__dict__.update(self._client.edit_message_media(
             chat_id=self.chat.id,
             message_id=self.message_id,
             media=media,
             reply_markup=reply_markup
-        )
+        ))
+        return self
 
     def edit_reply_markup(self, reply_markup: "pyrogram.InlineKeyboardMarkup" = None) -> "Message":
         """Bound method *edit_reply_markup* of :obj:`Message`.
@@ -2561,11 +2564,11 @@ class Message(Object, Update):
         Raises:
             RPCError: In case of a Telegram RPC error.
         """
-        return self._client.edit_message_reply_markup(
+        self.__dict__.update(self._client.edit_message_reply_markup(
             chat_id=self.chat.id,
             message_id=self.message_id,
             reply_markup=reply_markup
-        )
+        ))
 
     def forward(
         self,
